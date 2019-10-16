@@ -1,0 +1,26 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+library(ggplot2)
+K_Database<-read.table("Empirical_Fst_Delta_K_Data_for_R.txt", header=T)
+
+summary(K_Database)
+sd(K_Database$Value_of_DeltaK, na.rm = T)
+sd(K_Database$Fst, na.rm = T)
+cor.test(K_Database$log_DeltaK, K_Database$Fst)
+
+par(mfrow=c(1,2))
+hist(K_Database$log_DeltaK, main = NULL, xlab = "log(Delta K)")
+plot(K_Database$Fst, K_Database$log_DeltaK, xlab = "Fst", ylab = "log(Delta K)")
+abline(lm(K_Database$log_DeltaK~K_Database$Fst))
+
+
+```
+

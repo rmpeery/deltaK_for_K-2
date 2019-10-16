@@ -1,0 +1,27 @@
+# spid-file generated: Wed Dec 19 15:01:38 MST 2018
+
+# FSTAT Parser questions
+PARSER_FORMAT=FSTAT
+
+# How are Microsat alleles coded?
+FSTAT_PARSER_MICROSAT_CODING_QUESTION=REPEATS
+# Select the type of the data:
+FSTAT_PARSER_DATA_TYPE_QUESTION=MICROSAT
+# Open label file
+FSTAT_PARSER_LABEL_FILE_QUESTION=
+# Do you want to include a label file (listing the name of the populations)?
+FSTAT_PARSER_INCLUDE_LABELS_QUESTION=false
+# Enter the size of the repeated motif (same for all loci: one number; different: comma separated list (e.g.: 2,2,3,2):
+FSTAT_PARSER_REPEAT_SIZE_QUESTION=
+
+# STRUCTURE Writer questions
+WRITER_FORMAT=STRUCTURE
+
+# Specify the locus/locus combination you want to write to the STRUCTURE file:
+STRUCTURE_WRITER_LOCUS_COMBINATION_QUESTION=
+# Do you want to include inter-marker distances?
+STRUCTURE_WRITER_LOCI_DISTANCE_QUESTION=false
+# Specify which data type should be included in the STRUCTURE file  (STRUCTURE can only analyze one data type per file):
+STRUCTURE_WRITER_DATA_TYPE_QUESTION=MICROSAT
+# Save more specific fastSTRUCTURE format?
+STRUCTURE_WRITER_FAST_FORMAT_QUESTION=false
