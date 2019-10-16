@@ -3,14 +3,14 @@ Notes on pulling Fst values from EQU files - Peery 31Jan2019
 Use a shell command to grep the last lines of the file:
 
 $ sh tail.sh
-e.g. $ grep '20000' /Users/rhiannonpeery/Documents/sidePieces/K2/EQUfiles/ma10_100_equ/*equ > tail-n1.out.txt;
+e.g. $ grep '20000' /K2/EQUfiles/ma10_100_equ/*equ > tail-n1.out.txt;
 
 Pass this through some awk commands to get the name of the file and the final Fst
 
 $ wc -l tail-n1.out.txt
     2000 tail-n1.out.txt
 $ head -1 tail-n1.out.txt
-	/Users/rhiannonpeery/Documents/sidePieces/K2/EQUfiles/ma10_100_equ/ma10_100_001.equ:20000	4.40	0.2913	0.2922	0.6181	0.0030	0.5272	0.5286
+	/K2/EQUfiles/ma10_100_equ/ma10_100_001.equ:20000	4.40	0.2913	0.2922	0.6181	0.0030	0.5272	0.5286
 $ awk -F'/' <tail-n1.out.txt '{print $9}' > temp.out.txt
 $ head -1 temp.out.txt
 	ma10_100_001.equ:20000	4.40	0.2913	0.2922	0.6181	0.0030	0.5272	0.5286
@@ -28,3 +28,36 @@ $ wc -l EQUfiles.fst.txt
 $ tail -1 EQUfiles.fst.txt
 	se20_500_050.equ	0.0001
   
+
+
+###########
+
+Notes on pulling Fst from "OUT" files - Peery 31Jan2019
+
+Use a shell command to grep the last lines of the file:
+
+$ sh tail.sh
+e.g. $ grep 'total' /K2/OUTfiles/ma10_100_out/*out > total.out.txt;
+
+Pass this through some awk commands to get the name of the file and the final fst
+
+$ wc -l total.out.txt
+    2000 total.out.txt
+$ head -1 total.out.txt
+	/K2/OUTfiles/ma10_100_out/ma10_100_001.out:	 total	 0.719	 0.697	 0.076	 0.812	 Means
+$ awk -F'/' <total.out.txt '{print $9}' > temp.out.txt
+$ head -1 temp.out.txt
+	ma10_100_001.out:	 total	 0.719	 0.697	 0.076	 0.812	 Means
+$ awk -F':' <temp.out.txt '{print $1}' > temp2.out.txt
+$ head -1 temp2.out.txt
+	ma10_100_001.out
+$ awk <temp.out.txt '{print $7}' > temp3.out.txt
+$ head -1 temp3.out.txt
+	0.697
+$ paste temp2.out.txt temp3.out.txt > OUTfiles.fst.txt
+$ head -1 EQUfiles.fst.txt
+	ma10_100_001.out	0.697
+$ wc -l OUTfiles.fst.txt
+    2000 OUTfiles.fst.txt
+$ tail -1 OUTfiles.fst.txt
+	se20_500_050.out	-0.001
