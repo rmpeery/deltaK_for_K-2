@@ -1,4 +1,33 @@
-Notes on pulling Fst values from EQU files - Peery 31Jan2019
+For each simulation there are two output files
+*.equ (easypop output)
+*.out (FSTAT output)
+Extract the FST values from each output file:
+
+1. For the *.equ files, the FST value we need is the last line and 7th column of the file and each file has 20001 lines.
+This value is the FST for the simulated data set using all individuals.
+Example:
+…….
+19998    4.33    0.3003    0.2960    0.6230    -0.0148    0.5249    0.5179
+19999    4.27    0.2990    0.3002    0.6211    0.0039    0.5167    0.5186
+20000    4.40    0.2913    0.2922    0.6181    0.0030    0.5272    0.5286
+
+2. For the *.out files, the FST value is near the end of the file, these files will be of differing length, but how the FST
+values is presented is consistent among the files. This FST value represent the differentiation among the sub-sampled set
+(data used in Structure).
+Example:
+….
+************************************************
+
+     Jackknifing over loci.
+
+   	   Capf     Theta    Smallf     Relat
+     total     0.719     0.697     0.076     0.812     Means
+     		  0.057     0.059     0.088     0.046     Std. Err.
+
+************************************************
+
+
+Extracting Fst values from EQU files - Peery 31Jan2019
 
 Use a shell command to grep the last lines of the file:
 
@@ -32,7 +61,7 @@ $ tail -1 EQUfiles.fst.txt
 
 ###########
 
-Notes on pulling Fst from "OUT" files - Peery 31Jan2019
+Extracting Fst from "OUT" files - Peery 31Jan2019
 
 Use a shell command to grep the last lines of the file:
 
